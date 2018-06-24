@@ -1,3 +1,8 @@
 .app {
   display: flex;
 }
+
+.results-map {
+  width: 600px;
+  height: 600px;
+}

@@ -5,7 +5,10 @@ import './App.css';
 
 class App extends Component {
   state = {
-    results: [{ name: "San Francisco", location: [122.4194, 37.7749] }]
+    results: [
+      { name: "Dolores Park", lat: 37.759773, lng: -122.427063 },
+      { name: "Buena Vista Park", lat: 37.768204, lng: -122.441772 }
+    ]
   }
   render() {
     return (
