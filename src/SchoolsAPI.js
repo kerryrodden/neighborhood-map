@@ -8,10 +8,27 @@ const headers = {
   'X-App-Token': token
 };
 
+// Extract fields from the JSON that we want to use, and put them in a convenient form.
+const preprocess = (json) => {
+  return json.map(result => ({
+    name: result.campus_name,
+    position: {
+      lat: result.location_1.coordinates[1],
+      lng: result.location_1.coordinates[0]
+    },
+    address: result.campus_address,
+    category: result.category,
+    grade_range: result.grade_range,
+    district: result.supervisor_district,
+    id: result.map_label,
+    open: false
+  }));
+}
+
 export const getAllPublicElementary = () => {
   const query = 'SELECT * WHERE ccsf_entity="SFUSD" AND lower_grade < 1 AND upper_grade > 1';
-  const url = resource + '?$' + encodeURIComponent(query);
-  console.log(url);
+  const url = resource + '?$query=' + encodeURIComponent(query);
   return fetch(url, { headers })
-    .then(response => response.json());
+    .then(response => response.json())
+    .then(json => preprocess(json));
 }

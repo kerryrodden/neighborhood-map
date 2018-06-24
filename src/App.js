@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ResultsList from './ResultsList';
 import ResultsMap from './ResultsMap';
+import * as SchoolsAPI from './SchoolsAPI';
 import './App.css';
 
 class App extends Component {
   state = {
-    results: [
-      { name: "Dolores Park", lat: 37.759773, lng: -122.427063, open: true },
-      { name: "Buena Vista Park", lat: 37.768204, lng: -122.441772, open: false }
-    ]
+    results: []
   }
   openResult = (result) => {
     console.log("open", result);
@@ -23,6 +21,11 @@ class App extends Component {
     this.setState((currentState) => ({
       results: currentState.results.map(r => (result.name === r.name) ? result : r)
     }));
+  }
+  componentDidMount() {
+    SchoolsAPI.getAllPublicElementary().then((results) => {
+      this.setState({ results });
+    });
   }
   render() {
     return (

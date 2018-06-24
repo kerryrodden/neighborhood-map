@@ -11,11 +11,11 @@ const WrappedGoogleMap = withGoogleMap((props) =>
     defaultZoom={props.zoom}
     defaultCenter={props.center}
   >
-    {props.results.map((result, index) => {
+    {props.results.map((result) => {
       return (
         <Marker
-          key={index}
-          position={{ lat: result.lat, lng: result.lng }}
+          key={result.id}
+          position={result.position}
           onClick={result.open ? () => props.onCloseResult(result) : () => props.onOpenResult(result)}
           >
           {result.open && <InfoWindow onCloseClick={() => props.onCloseResult(result)}>

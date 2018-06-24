@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
+const sortByName = (a, b) => {
+  return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
+}
+
 class ResultsList extends Component {
   render() {
     return (
@@ -9,10 +13,9 @@ class ResultsList extends Component {
           <p>Placeholder for search controls</p>
         </div>
         <ol>
-          {this.props.results.map((result, index) => {
-            // TODO: use a more meaningful (and unique) key here
+          {this.props.results.sort(sortByName).map((result) => {
             return (
-              <li key={index}
+              <li key={result.id}
                 className="search-result"
                 onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
                 {result.name}
