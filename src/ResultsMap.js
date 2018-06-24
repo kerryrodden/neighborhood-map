@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import './App.css';
 
 // TODO: should these be declared in App.js and passed in as props?
@@ -11,9 +11,20 @@ const WrappedGoogleMap = withGoogleMap((props) =>
     defaultZoom={props.zoom}
     defaultCenter={props.center}
   >
-    {props.markers.map((marker, index) => {
+    {props.results.map((result, index) => {
       return (
-        <Marker key={index} position={{lat: marker.lat, lng: marker.lng}} />
+        <Marker
+          key={index}
+          position={{ lat: result.lat, lng: result.lng }}
+          onClick={result.open ? () => props.onCloseResult(result) : () => props.onOpenResult(result)}
+          >
+          {result.open && <InfoWindow onCloseClick={() => props.onCloseResult(result)}>
+            <div>
+              <h2>{result.name}</h2>
+              <p>some description here</p>
+            </div>
+          </InfoWindow>}
+        </Marker>
       )
     })}
   </GoogleMap>
@@ -24,9 +35,11 @@ class ResultsMap extends Component {
     return (
       <div className="results-map">
         <WrappedGoogleMap
-          markers={this.props.results}
+          results={this.props.results}
           zoom={DEFAULT_ZOOM}
           center={MAP_CENTER}
+          onOpenResult={this.props.onOpenResult}
+          onCloseResult={this.props.onCloseResult}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `600px` }} />}
           mapElement={<div style={{ height: `100%` }} />}

@@ -12,7 +12,10 @@ class ResultsList extends Component {
           {this.props.results.map((result, index) => {
             // TODO: use a more meaningful (and unique) key here
             return (
-              <li key={index}>{result.name}</li>
+              <li key={index}
+                onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
+                {result.name}
+              </li>
             )
           })}
         </ol>
