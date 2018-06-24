@@ -13,6 +13,7 @@ class ResultsList extends Component {
             // TODO: use a more meaningful (and unique) key here
             return (
               <li key={index}
+                className="search-result"
                 onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
                 {result.name}
               </li>
