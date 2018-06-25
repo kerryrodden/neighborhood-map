@@ -46,24 +46,19 @@ class App extends Component {
 
     return (
       <div className="app">
-        <div className="list-container">
-          <h1>Neighborhood Map</h1>
-          <ResultsList
-            results={filteredResults}
-            uniqueGradeRanges={this.state.uniqueGradeRanges}
-            gradeRange={this.state.selectedGradeRange}
-            onFilterChange={this.onFilterChange}
-            onOpenResult={this.openResult}
-            onCloseResult={this.closeResult}
-          />
-        </div>
-        <div className="map-container">
-          <ResultsMap
-            results={filteredResults}
-            onOpenResult={this.openResult}
-            onCloseResult={this.closeResult}
-          />
-        </div>
+        <ResultsList
+          results={filteredResults}
+          uniqueGradeRanges={this.state.uniqueGradeRanges}
+          gradeRange={this.state.selectedGradeRange}
+          onFilterChange={this.onFilterChange}
+          onOpenResult={this.openResult}
+          onCloseResult={this.closeResult}
+        />
+        <ResultsMap
+          results={filteredResults}
+          onOpenResult={this.openResult}
+          onCloseResult={this.closeResult}
+        />
       </div>
     );
   }

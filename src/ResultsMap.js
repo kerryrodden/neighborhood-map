@@ -44,7 +44,7 @@ class ResultsMap extends Component {
           onOpenResult={this.props.onOpenResult}
           onCloseResult={this.props.onCloseResult}
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `600px` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
