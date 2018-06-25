@@ -6,7 +6,12 @@ import './App.css';
 
 class App extends Component {
   state = {
-    results: []
+    results: [],
+    selectedGradeRange: "all"
+  }
+  onFilterChange = (selected) => {
+    console.log(selected);
+    this.setState({ selectedGradeRange: selected });
   }
   openResult = (result) => {
     console.log("open", result);
@@ -32,10 +37,20 @@ class App extends Component {
       <div className="app">
         <div className="list-container">
           <h1>Neighborhood Map</h1>
-          <ResultsList results={this.state.results} onOpenResult={this.openResult} onCloseResult={this.closeResult}/>
+          <ResultsList
+            results={this.state.results}
+            gradeRange={this.state.selectedGradeRange}
+            onFilterChange={this.onFilterChange}
+            onOpenResult={this.openResult}
+            onCloseResult={this.closeResult}
+          />
         </div>
         <div className="map-container">
-          <ResultsMap results={this.state.results} onOpenResult={this.openResult} onCloseResult={this.closeResult}/>
+          <ResultsMap
+            results={this.state.results}
+            onOpenResult={this.openResult}
+            onCloseResult={this.closeResult}
+          />
         </div>
       </div>
     );
