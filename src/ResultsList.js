@@ -10,9 +10,9 @@ class ResultsList extends Component {
     return (
       <div className="results-pane">
         <header>
-          <h1>San Francisco Public Elementary Schools</h1>
+          <h1>San Francisco Public Schools</h1>
           <div className="search-controls">
-            <label for="select-grade-range">Grade range:</label>
+            <label htmlFor="select-grade-range">Grade range:</label>
             <select id="select-grade-range" value={this.props.gradeRange} onChange={(event) => this.props.onFilterChange(event.target.value)}>
               <option value="all">All</option>
               {this.props.uniqueGradeRanges.map((gradeRange) => {
