@@ -9,11 +9,12 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  border: 10px solid #eee;
 }
 
 .results-pane header {
   background: #eee;
-  padding: 10px;
+  padding: 0 0 10px 20px;
 }
 
 .results-pane header h1 {
@@ -23,6 +24,7 @@
 
 .search-controls select {
   margin-left: 5px;
+  font-size: 1em;
 }
 
 .results-pane main {
@@ -51,6 +53,9 @@
   padding: 10px;
   background: white;
   display: flex;
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
 
 .result-name {
