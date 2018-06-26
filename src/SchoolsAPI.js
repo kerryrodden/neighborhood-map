@@ -17,8 +17,7 @@ const preprocess = (json) => {
       lng: result.location_1.coordinates[0]
     },
     address: result.campus_address,
-    category: result.category,
-    grade_range: result.grade_range,
+    gradeRange: result.grade_range,
     district: result.supervisor_district,
     id: result.map_label,
     open: false

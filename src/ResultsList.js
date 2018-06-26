@@ -32,6 +32,7 @@ class ResultsList extends Component {
                     className="result-item"
                     onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
                     <h2 className="result-name">{result.name}</h2>
+                    <p className="result-details">{result.gradeRange}, District {result.district}</p>
                   </li>
                 )
               })}

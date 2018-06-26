@@ -30,7 +30,7 @@ class App extends Component {
   }
   componentDidMount() {
     SchoolsAPI.getAllPublicElementary().then((results) => {
-      const uniqueGradeRanges = [...new Set(results.map(result => result.grade_range))].sort();
+      const uniqueGradeRanges = [...new Set(results.map(result => result.gradeRange))].sort();
       this.setState({ results, uniqueGradeRanges });
     });
   }
@@ -40,7 +40,7 @@ class App extends Component {
       if (this.state.selectedGradeRange === "all") {
         return true;
       } else {
-        return result.grade_range === this.state.selectedGradeRange;
+        return result.gradeRange === this.state.selectedGradeRange;
       }
     });
 

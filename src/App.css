@@ -52,20 +52,36 @@
 .result-item {
   padding: 10px;
   background: white;
-  display: flex;
   margin: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .result-name {
   font-size: 1em;
-  font-weight: normal;
-  cursor: pointer;
-  max-width: 450px;
+  margin: 0.4em 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  max-width: 450px;
+}
+
+.result-item .result-name {
+  font-weight: normal;
+}
+
+.result-details {
+  margin: 0.4em 0;
+  font-size: 0.85em;
+}
+
+.result-item .result-details {
+  color: #999;
+}
+
+.result-info-window {
+  font-size: 16px;
 }
 
 /* Responsive styles for smaller screens */
@@ -79,5 +95,8 @@
   }
   .results-map {
     height: 50vh;
+  }
+  .result-info-window .result-name {
+    max-width: 250px;
   }
 }
