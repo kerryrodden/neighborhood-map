@@ -34,10 +34,16 @@ const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
 ))
 
 class ResultsMap extends Component {
+  state = {
+    online: false
+  }
+  componentWillMount() {
+    this.setState({ online: navigator.onLine });
+  }
   render() {
     return (
       <div className="results-map">
-        <WrappedGoogleMap
+        {this.state.online && <WrappedGoogleMap
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0"
           results={this.props.results}
           zoom={DEFAULT_ZOOM}
@@ -47,7 +53,8 @@ class ResultsMap extends Component {
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}
-        />
+        />}
+       {!this.state.online && <p>Unable to retrieve Google Map</p>}
       </div>
     );
   }
