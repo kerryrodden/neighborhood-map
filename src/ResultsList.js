@@ -25,18 +25,23 @@ class ResultsList extends Component {
         </header>
         <main>
           <div className="results-container">
-            <ul className="results-list">
-              {this.props.results.sort(sortByName).map((result) => {
-                return (
-                  <li key={result.id}
-                    className="result-item"
-                    onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
-                    <h2 className="result-name">{result.name}</h2>
-                    <p className="result-details">{result.gradeRange}, District {result.district}</p>
-                  </li>
-                )
-              })}
-            </ul>
+            {this.props.results.length > 0 && (
+              <ul className="results-list">
+                {this.props.results.sort(sortByName).map((result) => {
+                  return (
+                    <li key={result.id}
+                      className="result-item"
+                      onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
+                      <h2 className="result-name">{result.name}</h2>
+                      <p className="result-details">{result.gradeRange}, District {result.district}</p>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
+            {this.props.results.length === 0 && (
+              <p className="error-message">No results available when offline</p>
+            )}
           </div>
         </main>
       </div>

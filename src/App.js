@@ -32,6 +32,8 @@ class App extends Component {
     SchoolsAPI.getAllPublicElementary().then((results) => {
       const uniqueGradeRanges = [...new Set(results.map(result => result.gradeRange))].sort();
       this.setState({ results, uniqueGradeRanges });
+    }).catch((error) => {
+      console.log("Error fetching data from schools API", error);
     });
   }
   render() {
