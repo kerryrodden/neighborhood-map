@@ -30,7 +30,7 @@ class ResultsList extends Component {
                 {this.props.results.sort(sortByName).map((result) => {
                   return (
                     <li key={result.id}
-                      className="result-item"
+                      className={result.open ? "result-item opened" : "result-item"}
                       onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
                       <h2 className="result-name">{result.name}</h2>
                       <p className="result-details">{result.gradeRange}, District {result.district}</p>
