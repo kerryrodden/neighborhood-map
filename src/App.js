@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     results: [],
     uniqueGradeRanges: [],
-    selectedGradeRange: "all"
+    selectedGradeRange: "all",
+    dataUnavailable: false
   }
   onFilterChange = (selected) => {
     console.log(selected);
@@ -34,6 +35,7 @@ class App extends Component {
       this.setState({ results, uniqueGradeRanges });
     }).catch((error) => {
       console.log("Error fetching data from schools API", error);
+      this.setState({ dataUnavailable: true });
     });
   }
   render() {
@@ -49,6 +51,7 @@ class App extends Component {
     return (
       <div className="app">
         <ResultsList
+          dataUnavailable={this.state.dataUnavailable}
           results={filteredResults}
           uniqueGradeRanges={this.state.uniqueGradeRanges}
           gradeRange={this.state.selectedGradeRange}

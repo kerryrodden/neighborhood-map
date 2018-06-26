@@ -25,7 +25,7 @@ class ResultsList extends Component {
         </header>
         <main>
           <div className="results-container">
-            {this.props.results.length > 0 && (
+            {!this.props.dataUnavailable && (
               <ul className="results-list">
                 {this.props.results.sort(sortByName).map((result) => {
                   return (
@@ -39,8 +39,8 @@ class ResultsList extends Component {
                 })}
               </ul>
             )}
-            {this.props.results.length === 0 && (
-              <p className="error-message">No results available when offline</p>
+            {this.props.dataUnavailable && (
+              <p className="error-message">Could not fetch results from server</p>
             )}
           </div>
         </main>
