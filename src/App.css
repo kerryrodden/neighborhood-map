@@ -74,11 +74,18 @@
 }
 
 .result-item .result-details {
-  color: #999;
+  color: #666;
 }
 
 .result-info-window {
   font-size: 16px;
+}
+
+.results-pane footer {
+  color: #666;
+  background-color: #eee;
+  font-size: 0.8em;
+  padding: 10px 10px 0;
 }
 
 .error-message {

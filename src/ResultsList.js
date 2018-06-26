@@ -44,6 +44,7 @@ class ResultsList extends Component {
             )}
           </div>
         </main>
+        <footer>Schools data from <a target="_blank" rel="noopener noreferrer" href="https://datasf.org/opendata/">DataSF</a></footer>
       </div>
     );
   }
