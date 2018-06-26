@@ -24,7 +24,7 @@ const WrappedGoogleMap = withGoogleMap((props) =>
           {result.open && <InfoWindow onCloseClick={() => props.onCloseResult(result)}>
             <div className="result-info-window">
               <h2 className="result-name">{result.name}</h2>
-              <p class="result-details">{result.address}</p>
+              <p className="result-details">{result.address}</p>
             </div>
           </InfoWindow>}
         </Marker>

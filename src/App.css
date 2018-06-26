@@ -14,7 +14,7 @@
 
 .results-pane header {
   background: #eee;
-  padding: 0 0 10px 20px;
+  padding: 0 0 10px 10px;
 }
 
 .results-pane header h1 {
@@ -34,7 +34,6 @@
 
 .results-container {
   height: 100%;
-  overflow-y: auto;
 }
 
 .results-map {
@@ -52,9 +51,7 @@
 .result-item {
   padding: 10px;
   background: white;
-  margin: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
