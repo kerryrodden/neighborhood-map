@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ResultsList from './ResultsList';
 import ResultsMap from './ResultsMap';
 import * as SchoolsAPI from './SchoolsAPI';
+import ErrorBoundary from './ErrorBoundary';
 import './App.css';
 
 class App extends Component {

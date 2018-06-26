@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import './App.css';
 
 // TODO: should these be declared in App.js and passed in as props?
@@ -8,7 +8,7 @@ const DEFAULT_ZOOM = 12;
 const BLUE_MARKER = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 const RED_MARKER = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
-const WrappedGoogleMap = withGoogleMap((props) =>
+const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.zoom}
     defaultCenter={props.center}
@@ -31,13 +31,14 @@ const WrappedGoogleMap = withGoogleMap((props) =>
       )
     })}
   </GoogleMap>
-)
+))
 
 class ResultsMap extends Component {
   render() {
     return (
       <div className="results-map">
         <WrappedGoogleMap
+          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0"
           results={this.props.results}
           zoom={DEFAULT_ZOOM}
           center={MAP_CENTER}
