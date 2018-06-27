@@ -19,9 +19,9 @@ const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
           key={result.id}
           position={result.position}
           icon={result.open ? RED_MARKER : BLUE_MARKER}
-          onClick={result.open ? () => props.onCloseResult(result) : () => props.onOpenResult(result)}
+          onClick={() => props.onToggleResult(result)}
           >
-          {result.open && <InfoWindow onCloseClick={() => props.onCloseResult(result)}>
+          {result.open && <InfoWindow onCloseClick={() => props.onToggleResult(result)}>
             <div className="result-info-window">
               <h2 className="result-name">{result.name}</h2>
               <p className="result-details">{result.address}</p>
@@ -49,8 +49,7 @@ class ResultsMap extends Component {
           results={this.props.results}
           zoom={DEFAULT_ZOOM}
           center={MAP_CENTER}
-          onOpenResult={this.props.onOpenResult}
-          onCloseResult={this.props.onCloseResult}
+          onToggleResult={this.props.onToggleResult}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `100%` }} />}
           mapElement={<div style={{ height: `100%` }} />}

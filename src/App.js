@@ -14,16 +14,10 @@ class App extends Component {
   onFilterChange = (selected) => {
     this.setState({ selectedGradeRange: selected });
   }
-  openResult = (result) => {
-    // Close all results except the one that was just clicked (ensure only one open at a time)
+  toggleResult = (result) => {
+    // If this result was closed, open it, and otherwise ensure all results are closed.
     this.setState((currentState) => ({
-      results: currentState.results.map(r => ({...r, open: r.name === result.name }))
-    }));
-  }
-  closeResult = (result) => {
-    // Close all results
-    this.setState((currentState) => ({
-      results: currentState.results.map(r => ({...r, open: false }))
+      results: currentState.results.map(r => ({...r, open: !result.open && r.name === result.name }))
     }));
   }
 
@@ -54,13 +48,11 @@ class App extends Component {
           uniqueGradeRanges={this.state.uniqueGradeRanges}
           gradeRange={this.state.selectedGradeRange}
           onFilterChange={this.onFilterChange}
-          onOpenResult={this.openResult}
-          onCloseResult={this.closeResult}
+          onToggleResult={this.toggleResult}
         />
         <ResultsMap
           results={filteredResults}
-          onOpenResult={this.openResult}
-          onCloseResult={this.closeResult}
+          onToggleResult={this.toggleResult}
         />
       </div>
     );
