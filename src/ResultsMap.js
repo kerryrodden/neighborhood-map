@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import { withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps'
 import './App.css';
 
 const MAP_CENTER = { lat: 37.7749, lng: -122.4194 }; // San Francisco
@@ -9,7 +9,7 @@ const RED_MARKER = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
 // Written with reference to react-google-maps documentation at
 // https://tomchentw.github.io/react-google-maps/
-const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
+const WrappedGoogleMap = withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.zoom}
     defaultCenter={props.center}
@@ -32,7 +32,7 @@ const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
       )
     })}
   </GoogleMap>
-))
+)
 
 class ResultsMap extends Component {
   state = {
@@ -46,7 +46,6 @@ class ResultsMap extends Component {
       <div className="results-map" role="region" aria-label="Google Map with a marker for each school matching the selected grade range.">
         {this.state.online && (
         <WrappedGoogleMap
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0"
           results={this.props.results}
           zoom={DEFAULT_ZOOM}
           center={MAP_CENTER}
