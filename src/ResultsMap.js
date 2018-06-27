@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import './App.css';
 
-// TODO: should these be declared in App.js and passed in as props?
 const MAP_CENTER = { lat: 37.7749, lng: -122.4194 }; // San Francisco
 const DEFAULT_ZOOM = 12;
 const BLUE_MARKER = 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png';
 const RED_MARKER = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 
+// Written with reference to react-google-maps documentation at
+// https://tomchentw.github.io/react-google-maps/
 const WrappedGoogleMap = withScriptjs(withGoogleMap((props) =>
   <GoogleMap
     defaultZoom={props.zoom}

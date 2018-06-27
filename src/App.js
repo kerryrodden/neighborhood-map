@@ -5,17 +5,20 @@ import * as SchoolsAPI from './SchoolsAPI';
 import './App.css';
 
 class App extends Component {
+
   state = {
     results: [],
     uniqueGradeRanges: [],
     selectedGradeRange: "all",
     dataUnavailable: false
   }
+
   onFilterChange = (selected) => {
     this.setState({ selectedGradeRange: selected });
   }
+
+  // If this result was closed, open it, and otherwise ensure all results are closed.
   toggleResult = (result) => {
-    // If this result was closed, open it, and otherwise ensure all results are closed.
     this.setState((currentState) => ({
       results: currentState.results.map(r => ({...r, open: !result.open && r.name === result.name }))
     }));
@@ -30,6 +33,7 @@ class App extends Component {
       this.setState({ dataUnavailable: true });
     });
   }
+
   render() {
 
     const filteredResults = this.state.results.filter((result) => {

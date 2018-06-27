@@ -24,6 +24,7 @@ const preprocess = (json) => {
   }));
 }
 
+  // This query retrieves all of the public schools that include kindergarten
 export const getAllPublicElementary = () => {
   const query = 'SELECT * WHERE ccsf_entity="SFUSD" AND lower_grade < 1 AND upper_grade > 1';
   const url = resource + '?$query=' + encodeURIComponent(query);
