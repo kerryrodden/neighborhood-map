@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ResultsList from './ResultsList';
+import ResultsPane from './ResultsPane';
 import ResultsMap from './ResultsMap';
 import * as SchoolsAPI from './SchoolsAPI';
 import './App.css';
@@ -12,23 +12,21 @@ class App extends Component {
     dataUnavailable: false
   }
   onFilterChange = (selected) => {
-    console.log(selected);
     this.setState({ selectedGradeRange: selected });
   }
   openResult = (result) => {
-    console.log("open", result);
-    result.open = true;
+    // Close all results except the one that was just clicked (ensure only one open at a time)
     this.setState((currentState) => ({
-      results: currentState.results.map(r => (result.name === r.name) ? result : r)
+      results: currentState.results.map(r => ({...r, open: r.name === result.name }))
     }));
   }
   closeResult = (result) => {
-    console.log("close", result);
-    result.open = false;
+    // Close all results
     this.setState((currentState) => ({
-      results: currentState.results.map(r => (result.name === r.name) ? result : r)
+      results: currentState.results.map(r => ({...r, open: false }))
     }));
   }
+
   componentDidMount() {
     SchoolsAPI.getAllPublicElementary().then((results) => {
       const uniqueGradeRanges = [...new Set(results.map(result => result.gradeRange))].sort();
@@ -50,7 +48,7 @@ class App extends Component {
 
     return (
       <div className="app">
-        <ResultsList
+        <ResultsPane
           dataUnavailable={this.state.dataUnavailable}
           results={filteredResults}
           uniqueGradeRanges={this.state.uniqueGradeRanges}

@@ -42,7 +42,7 @@ class ResultsMap extends Component {
   }
   render() {
     return (
-      <div className="results-map">
+      <div className="results-map" aria-label="Google Map with a marker for each school matching the selected grade range.">
         {this.state.online && (
         <WrappedGoogleMap
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0"

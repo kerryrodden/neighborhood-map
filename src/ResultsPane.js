@@ -5,7 +5,7 @@ const sortByName = (a, b) => {
   return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
 }
 
-class ResultsList extends Component {
+class ResultsPane extends Component {
   render() {
     return (
       <div className="results-pane">
@@ -24,20 +24,21 @@ class ResultsList extends Component {
           </div>
         </header>
         <main>
-          <div className="results-container">
+          <div className="results-container" role="region" tabIndex={0} aria-label="List of schools matching the selected grade range. Clicking one will open it on the map.">
             {!this.props.dataUnavailable && (
-              <ul className="results-list">
+              <div className="results-list">
                 {this.props.results.sort(sortByName).map((result) => {
                   return (
-                    <li key={result.id}
+                    // Use button elements here to enable easy keyboard navigation
+                    <button key={result.id}
                       className={result.open ? "result-item opened" : "result-item"}
                       onClick={result.open ? () => this.props.onCloseResult(result) : () => this.props.onOpenResult(result)}>
                       <h2 className="result-name">{result.name}</h2>
                       <p className="result-details">{result.gradeRange}, District {result.district}</p>
-                    </li>
+                    </button>
                   )
                 })}
-              </ul>
+              </div>
             )}
             {this.props.dataUnavailable && (
               <p className="error-message">Could not fetch results from server</p>
@@ -50,4 +51,4 @@ class ResultsList extends Component {
   }
 }
 
-export default ResultsList;
+export default ResultsPane;
