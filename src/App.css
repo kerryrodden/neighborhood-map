@@ -19,7 +19,7 @@
 
 .results-pane header {
   background: #eee;
-  padding: 0 0 10px 10px;
+  padding: 0 0 10px 15px;
 }
 
 .results-pane header h1 {
@@ -45,7 +45,7 @@
 .results-list {
   width: 100%;
   margin: 0;
-  padding: 0;
+  padding: 5px;
 }
 
 /* This is a button so we need to totally restyle it */
@@ -57,7 +57,7 @@
   font-size: 16px;
   padding: 10px;
   background: white;
-  border-bottom: 1px solid #ddd;
+  border: none;
   cursor: pointer;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .result-item.opened {
-  background: #FFF9C4;
+  background: #E3F2FD; /* Material Blue 50 */
 }
 
 .result-info-window {
@@ -95,7 +95,7 @@
   color: #666;
   background-color: #eee;
   font-size: 0.8em;
-  padding: 10px 10px 0;
+  padding: 10px 0 0 15px;
 }
 
 .error-message {

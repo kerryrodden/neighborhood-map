@@ -15,19 +15,21 @@ class ResultsPane extends Component {
         <header>
           <h1>San Francisco Public Schools</h1>
           <div className="filter-controls">
-            <label htmlFor="select-grade-range">Grade range:</label>
-            <select id="select-grade-range" value={this.props.gradeRange} onChange={(event) => this.props.onFilterChange(event.target.value)}>
-              <option value="all">All</option>
-              {this.props.uniqueGradeRanges.map((gradeRange) => {
-                return (
-                  <option key={gradeRange} value={gradeRange}>{gradeRange}</option>
-                )
-              })}
-            </select>
+            <form aria-label="Filter the list of schools">
+              <label htmlFor="select-grade-range">Grade range:</label>
+              <select id="select-grade-range" value={this.props.gradeRange} onChange={(event) => this.props.onFilterChange(event.target.value)}>
+                <option value="all">All</option>
+                {this.props.uniqueGradeRanges.map((gradeRange) => {
+                  return (
+                    <option key={gradeRange} value={gradeRange}>{gradeRange}</option>
+                  )
+                })}
+              </select>
+            </form>
           </div>
         </header>
-        <main>
-          <div className="results-container" role="region" tabIndex={0} aria-label="List of schools matching the selected grade range. Clicking one will open it on the map.">
+        <main aria-label="List of schools matching the selected grade range. Clicking one will open it on the map.">
+          <div className="results-container">
             {!this.props.dataUnavailable && (
               <div className="results-list">
                 {this.props.results.sort(sortByName).map((result) => {
