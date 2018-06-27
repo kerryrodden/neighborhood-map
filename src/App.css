@@ -115,6 +115,9 @@
     height: 50vh;
   }
   .result-info-window .result-name {
-    max-width: 250px;
+    max-width: 270px;
+  }
+  .result-info-window .result-details {
+    max-width: 270px;
   }
 }
