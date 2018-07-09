@@ -35,16 +35,9 @@ const WrappedGoogleMap = withGoogleMap((props) =>
 )
 
 class ResultsMap extends Component {
-  state = {
-    online: false
-  }
-  componentWillMount() {
-    this.setState({ online: navigator.onLine });
-  }
   render() {
     return (
       <div className="results-map" role="region" aria-label="Google Map with a marker for each school matching the selected grade range.">
-        {this.state.online && (
         <WrappedGoogleMap
           results={this.props.results}
           zoom={DEFAULT_ZOOM}
@@ -55,9 +48,6 @@ class ResultsMap extends Component {
           mapElement={<div style={{ height: `100%` }} />}
         />
         )}
-       {!this.state.online && (
-        <p className="error-message">Network unavailable: unable to retrieve Google Map</p>
-       )}
       </div>
     );
   }

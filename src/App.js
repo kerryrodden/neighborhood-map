@@ -10,7 +10,8 @@ class App extends Component {
     results: [],
     uniqueGradeRanges: [],
     selectedGradeRange: "all",
-    dataUnavailable: false
+    dataUnavailable: false,
+    mapsError: false
   }
 
   onFilterChange = (selected) => {
@@ -20,8 +21,13 @@ class App extends Component {
   // If this result was closed, open it, and otherwise ensure all results are closed.
   toggleResult = (result) => {
     this.setState((currentState) => ({
-      results: currentState.results.map(r => ({...r, open: !result.open && r.name === result.name }))
+      results: currentState.results.map(r => ({ ...r, open: !result.open && r.name === result.name }))
     }));
+  }
+
+  componentWillMount() {
+    // window.mapsError is potentially set to true in the maps error callback in index.html
+    this.setState({ mapsError: window.mapsError || !navigator.onLine });
   }
 
   componentDidMount() {
@@ -54,10 +60,13 @@ class App extends Component {
           onFilterChange={this.onFilterChange}
           onToggleResult={this.toggleResult}
         />
-        <ResultsMap
+        {!this.state.mapsError && <ResultsMap
           results={filteredResults}
           onToggleResult={this.toggleResult}
-        />
+        />}
+        {this.state.mapsError && (
+          <p className="error-message">Could not load map: unable to connect to Google Maps</p>
+        )}
       </div>
     );
   }

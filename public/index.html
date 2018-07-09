@@ -22,9 +22,20 @@
     -->
     <title>Neighborhood Map Project</title>
     <!--
-      Load the Google Maps APIs
+      Load the Google Maps APIs and handle detectable errors
     -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0"></script>
+    <script>
+      window.mapsError = false;
+      function errorCallback() {
+        window.mapsError = true;
+      }
+      function gm_authFailure() {
+        window.mapsError = true;
+        // This error occurs after React has already started to render the map component, so use DOM manipulation to override Google's message.
+        document.querySelector('.results-map').innerHTML = '<p class="error-message">Could not load map: Google Maps authorization failure</p>';
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDctbHVL5ZFxG7cYf-WSi_38ZF9sE7wTW0" onerror="errorCallback()"></script>
   </head>
   <body>
     <noscript>
